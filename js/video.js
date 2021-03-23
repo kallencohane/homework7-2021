@@ -9,8 +9,10 @@ window.addEventListener("load", function () {
 document.querySelector("#play").addEventListener("click", function () {
 	console.log("Play Video");
 	video.play();
-	var vol = document.querySelector("#slider").value;
-	document.getElementById("volume").innerHTML = vol;
+	if (video.play) {
+		var vol = document.querySelector("#slider").value;
+		document.getElementById("volume").innerHTML = vol+"%";
+	}
 
 });
 
@@ -54,14 +56,16 @@ document.querySelector("#mute").addEventListener("click", function () {
 
 });
 
+
 var slider = document.getElementById("slider");
 var output = document.getElementById("volume");
-output.innerHTML = slider.value;
+// output.innerHTML = slider.value+"%";
 
 slider.oninput = function() {
-  output.innerHTML = this.value;
-  video.volume = this.value/100;
+	output.innerHTML = this.value+"%";
+	video.volume = this.value/100;
 }
+
 
 
 document.querySelector("#vintage").addEventListener("click", function () {
